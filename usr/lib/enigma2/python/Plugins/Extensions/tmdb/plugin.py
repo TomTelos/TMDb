@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #######################################################################
-# maintainer: <schomi@vuplus-support.org> 
+# maintainer: <schomi@vuplus-support.org>
+# modiffied by TomTelos:
+# - add polish language
+# - adjustment cover for sh4
 # This plugin is free software, you are allowed to
 # modify it (if you keep the license),
 # but you are not allowed to distribute/publish

@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tmdb\n"
+"POT-Creation-Date: 2015-03-29 11:40+0100\n"
+"PO-Revision-Date: 2015-06-21 09:20+0100\n"
+"Last-Translator: TomTelos\n"
+"Language-Team: TomTelos\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: C:\\Users\\michael\\Desktop\\Plugins\\Plugin tmdb"
+"\\tmdb\n"
+
+msgid " "
+msgstr " "
+
+msgid "Author:"
+msgstr "Scenariusz:"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Countries:"
+msgstr "Kraj:"
+
+msgid "Cover resolution:"
+msgstr "Rozdzielczość okładki:"
+
+msgid "Delete EIT file?"
+msgstr "Usunąć plik EIT?"
+
+msgid "Director:"
+msgstr "Reżyseria:"
+
+msgid "Do you want to replace EIT by TMDb Information?"
+msgstr "Czy chcesz zamienić informację EIT na TMDb?"
+
+msgid "EIT file deleted!"
+msgstr "Plik EIT został usunięty!"
+
+msgid "Edit"
+msgstr "Edycja"
+
+msgid "Exit"
+msgstr "Wyjście"
+
+msgid "Genre:"
+msgstr "Gatunek:"
+
+msgid "Language:"
+msgstr "Język:"
+
+msgid "Load Movie information for %s"
+msgstr "Wczytywanie informacji o filmie %s"
+
+msgid "Loading..."
+msgstr "Wczytywanie ..."
+
+msgid "No Movie information found for %s"
+msgstr "Nie znaleziono informacji o filmie %s"
+
+msgid "Runtime:"
+msgstr "Czas trwania:"
+
+msgid "Search for Movie:"
+msgstr "Szukaj filmu:"
+
+msgid "Setup"
+msgstr "Ustawienia"
+
+msgid "Show first search result:"
+msgstr "Pokaż pierwszy wynik wyszukiwania:"
+
+msgid "Studio:"
+msgstr "Studio:"
+
+msgid "TMDb"
+msgstr "Szukanie w TMDb ..."
+
+msgid "TMDb ... function for Movielist"
+msgstr "TMDb ... Funkcje dla listy nagrań"
+
+msgid "TMDb Infos ..."
+msgstr "Szukanie w TMDb ..."
+
+msgid "TMDb information created!"
+msgstr "TMDb Informacja stworzona!"
+
+msgid "Try to find %s in tmdb ..."
+msgstr "Szukaj %s w tmdb ..."
+
+msgid "Votes:"
+msgstr "Głosów:"
+
+msgid "Write TMDb Information?"
+msgstr "Nadpisać informację TMDb?"
+
+msgid "Year:"
+msgstr "Rok:"

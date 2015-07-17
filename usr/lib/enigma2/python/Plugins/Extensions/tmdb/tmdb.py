@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 #######################################################################
 # maintainer: einfall, mod by schomi@vuplus-support.org
-#
+# modiffied by TomTelos:
+# - add polish language
+# - adjustment cover for sh4
 #This plugin is free software, you are allowed to
 #modify it (if you keep the license),
 #but you are not allowed to distribute/publish
@@ -64,7 +66,7 @@ pdate = "20150514"
 config.plugins.tmdb = ConfigSubsection()
 config.plugins.tmdb.themoviedb_coversize = ConfigSelection(default="w185", choices = ["w92", "w185", "w500", "original"])
 config.plugins.tmdb.firsthit = ConfigYesNo(default = False)
-config.plugins.tmdb.lang = ConfigSelection(default="de", choices = ["de", "en"])
+config.plugins.tmdb.lang = ConfigSelection(default="pl", choices = ["pl", "de", "en"])
 
 def cleanFile(text):
 	cutlist = ['x264','720p','1080p','1080i','PAL','GERMAN','ENGLiSH','WS','DVDRiP','UNRATED','RETAIL','Web-DL','DL','LD','MiC','MD','DVDR','BDRiP','BLURAY','DTS','UNCUT','ANiME',
@@ -283,7 +285,7 @@ class tmdbScreen(Screen):
 		
 		self['cover'] = Pixmap()
 		
-		self.tempDir = "/var/volatile/tmp/"
+		self.tempDir = "/tmp/"
 		self.onLayoutFinish.append(self.onFinish)
 		
 	def onFinish(self):
