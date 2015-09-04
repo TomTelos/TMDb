@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #######################################################################
 # maintainer: <schomi@vuplus-support.org>
-# modiffied by TomTelos:
+# modified by TomTelos:
 # - add polish language
 # - adjustment cover for sh4
 # This plugin is free software, you are allowed to
