@@ -3,8 +3,6 @@
 #######################################################################
 # maintainer: einfall, mod by schomi@vuplus-support.org
 # modiffied by TomTelos:
-# - add polish language
-# - adjustment cover for sh4
 #This plugin is free software, you are allowed to
 #modify it (if you keep the license),
 #but you are not allowed to distribute/publish
@@ -60,8 +58,8 @@ from __init__ import _
 
 pname = _("TMDb")
 pdesc = _("TMDb ... function for Movielist")
-pversion = "0.6-r0"
-pdate = "20150514"
+pversion = "0.6-r2"
+pdate = "20151114"
 
 config.plugins.tmdb = ConfigSubsection()
 config.plugins.tmdb.themoviedb_coversize = ConfigSelection(default="w185", choices = ["w92", "w185", "w500", "original"])
@@ -273,7 +271,8 @@ class tmdbScreen(Screen):
 			"up"    : self.keyUp,
 			"down"  : self.keyDown,
 			"green" : self.keyGreen,
-			"blue"	: self.keyBlue
+			"blue"	: self.keyBlue,
+			"menu"	: self.keyBlue
 		}, -1)
 
 		self['searchinfo'] = Label(_("Loading..."))
@@ -302,11 +301,13 @@ class tmdbScreen(Screen):
 		self.session.openWithCallback(self.exit, tmdbScreenMovie, title, url, cover, id, self.saveFilename)
 
 	def getResults(self, data):
+		data = data.replace('\/','')
 		if config.plugins.tmdb.firsthit.value:
-			list = re.findall('"id":(.*?),.*?original_title":"(.*?)".*?"poster_path":"(.*?)".*?title":"(.*?)"', data, re.S)
+			# list = re.findall('"id":(.*?),.*?original_title":"(.*?)".*?"poster_path":"(.*?)".*?title":"(.*?)"', data, re.S)
+			list = re.findall('.*?"poster_path":"(.*?)".*?"id":(.*?),.*?"original_title":"(.*?)".*?"title":"(.*?)"', data, re.S)			
 			if list:
-				for id,otitle,coverPath,title in list:
-					url_cover = "http://image.tmdb.org/t/p/%s%s" % (config.plugins.tmdb.themoviedb_coversize.value, coverPath)
+				for coverPath,id,otitle,title in list:
+					url_cover = "http://image.tmdb.org/t/p/%s/%s" % (config.plugins.tmdb.themoviedb_coversize.value, coverPath)
 					url = "http://api.themoviedb.org/3/movie/%s?api_key=8789cfd3fbab7dccf1269c3d7d867aff&append_to_response=releases,trailers,casts&language=%s" % (id, config.plugins.tmdb.lang.value)
 					cover = self.tempDir+id+".jpg"
 					downloadPage(url_cover, cover).addCallback(self.openMovie, title, url, cover, id).addErrback(self.dataError)
@@ -316,10 +317,12 @@ class tmdbScreen(Screen):
 				self['searchinfo'].setText(_("No Movie information found for %s") % self.text)
 		else:
 			urls = []
-			list = re.findall('"id":(.*?),.*?original_title":"(.*?)".*?"poster_path":"(.*?)".*?title":"(.*?)"', data, re.S)
+			# list = re.findall('"id":(.*?),.*?original_title":"(.*?)".*?"poster_path":"(.*?)".*?title":"(.*?)"', data, re.S)
+			list = re.findall('.*?"poster_path":"(.*?)".*?"id":(.*?),.*?"original_title":"(.*?)".*?"title":"(.*?)"', data, re.S)
+
 			if list:
-				for id,otitle,coverPath,title in list:
-					url_cover = "http://image.tmdb.org/t/p/%s%s" % (config.plugins.tmdb.themoviedb_coversize.value, coverPath)
+				for coverPath,id,otitle,title in list:
+					url_cover = "http://image.tmdb.org/t/p/%s/%s" % (config.plugins.tmdb.themoviedb_coversize.value, coverPath)
 					url = "http://api.themoviedb.org/3/movie/%s?api_key=8789cfd3fbab7dccf1269c3d7d867aff&append_to_response=releases,trailers,casts&language=%s" % (id, config.plugins.tmdb.lang.value)
 					#print "[tmbd] " + title, url_cover, "\n", url
 					urls.append(((title, url_cover, url, id),))

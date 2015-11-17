@@ -1,24 +1,30 @@
-﻿# -*- coding: utf-8 -*-
-
-from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
-import os, gettext
 
-PluginLanguageDomain = "tmdb"
-PluginLanguagePath = "Extensions/tmdb/locale"
+PluginName = 'tmdb'
+PluginGroup = 'Extensions'
+PluginFolder = PluginName
+PluginPath = resolveFilename(SCOPE_PLUGINS, '%s/%s/' %(PluginGroup,PluginFolder))
+PluginLanguageDomain = "plugin-" + PluginName
+PluginLanguagePath = resolveFilename(SCOPE_PLUGINS, '%s/%s/locale' % (PluginGroup,PluginFolder))
 
-def localeInit():
-	lang = language.getLanguage()[:2]
-	os.environ["LANGUAGE"] = lang
-	print "[TMDb] set language to ", lang
-	gettext.bindtextdomain(PluginLanguageDomain, resolveFilename(SCOPE_PLUGINS, PluginLanguagePath))
+try:
+    from Components.LanguageGOS import gosgettext as _
+except:
+    from Components.Language import language
+    import gettext
+    from os import environ
 
-def _(txt):
-	t = gettext.dgettext(PluginLanguageDomain, txt)
-	if t == txt:
-		print "[TMDb] fallback to default Enigma2 Translation for", txt
-		t = gettext.gettext(txt)
-	return t
+    def localeInit():
+        lang = language.getLanguage()[:2]
+        environ["LANGUAGE"] = lang
+        gettext.bindtextdomain(PluginLanguageDomain, PluginLanguagePath)
 
-localeInit()
-language.addCallback(localeInit)
+    def _(txt):
+        t = gettext.dgettext(PluginLanguageDomain, txt)
+        if t == txt:
+                t = gettext.gettext(txt)
+        return t
+
+    localeInit()
+    language.addCallback(localeInit)
+
